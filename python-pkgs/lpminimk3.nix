@@ -21,7 +21,7 @@ let
       sha256 = "sha256-oLMf0I15jfkoZxfZ6dgp1NxMBaekvV4B1RUWJhpmy8g=";
     };
     doCheck = false;
-    propagatedBuildInputs = [
+    dependencies = [
       # Specify dependencies
       python-rtmidi
       jsonschema

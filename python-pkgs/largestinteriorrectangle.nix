@@ -21,7 +21,7 @@ let
       sha256 = "sha256-WTJPJZfMRiGwKbpcv3HYT4EloSkUpbtzENVvxJiwAr0=";
     };
     doCheck = false;
-    propagatedBuildInputs = [
+    dependencies = [
       # Specify dependencies
       opencv-python
       numba

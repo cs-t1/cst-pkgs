@@ -23,7 +23,7 @@ let
       sha256 = "sha256-UM71KqK/yPYV4SltULCFBjtLEDTqlfh7mfC52BVKzEU=";
     };
     doCheck = false;
-    propagatedBuildInputs = [
+    dependencies = [
       # Specify dependencies
       opencv-python
       requests
