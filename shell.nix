@@ -2,6 +2,9 @@ let
   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
   pkgs = import nixpkgs { };
 in
-{
-  rvgl = pkgs.callPackage ./pkgs/rvgl-bin.nix { };
+
+pkgs.mkShellNoCC {
+  packages = [
+    (pkgs.callPackage ./pkgs/rvgl-bin.nix {})
+  ];
 }
