@@ -9,13 +9,15 @@
 , enet
 , libunistring
 , makeWrapper
+, makeDesktopItem
+, writeShellScript
 }:
 let car_skins = true;
     additional_cars = true;
     additional_tracks = true;
     bonus_tracks = true;
 in
-stdenv.mkDerivation (finalAttrs: rec {
+stdenv.mkDerivation rec {
   pname = "rvgl-bin";
   version = "";
 
@@ -118,13 +120,19 @@ stdenv.mkDerivation (finalAttrs: rec {
     ])
   ;
 
+  desktopItem = makeDesktopItem {
+    name = "rvgl";
+    desktopName = "RVGL";
+    comment = "";
+    exec = "rvgl";
+    categories = [ "Game" ];
+  };
 
   # TODO: adapt wrt flags
   installPhase = ''
-    #echo "$PWD"
-    ls -al
-    #ls -al $srcs
+    #ls -al
     mkdir -p $out/opt/rvgl
+    mkdir -p $out/share
     cp -R rvgl-assets/* $out/opt/rvgl
     cp -R game_files/* $out/opt/rvgl
     cp -a rvgl-platform/linux/ $out/opt/rvgl
@@ -147,6 +155,13 @@ stdenv.mkDerivation (finalAttrs: rec {
 
       wrapProgram $out/opt/rvgl/rvgl                                \
             --prefix LD_LIBRARY_PATH : $libPath \
+
+    ln -s ${desktopItem}/share/applications $out/share/
+
+    mkdir -p $out/usr/bin
+    echo "#! ${pkgs.bash} \
+      cd $out/opt/rvgl && ./rvgl $@" > rvgl-launch-script.sh
+    cp rvgl-launch-script.sh $out/usr/bin/rvgl 
     '';
 
     libPath = lib.makeLibraryPath [
@@ -164,4 +179,4 @@ stdenv.mkDerivation (finalAttrs: rec {
     maintainers = [ ];
   };
 
-})
+}

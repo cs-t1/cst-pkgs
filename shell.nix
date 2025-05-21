@@ -1,6 +1,5 @@
 let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
-  pkgs = import nixpkgs { };
+ pkgs= import <nixpkgs> { };
 in
 
 pkgs.mkShellNoCC {
