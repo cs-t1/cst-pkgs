@@ -1,5 +1,5 @@
 { lib
-, pkgs
+, nixpkgs
 , stdenv
 , fetchFromGitLab
 , flac
@@ -159,7 +159,7 @@ stdenv.mkDerivation rec {
     ln -s ${desktopItem}/share/applications $out/share/
 
     mkdir -p $out/usr/bin
-    echo "#! ${pkgs.bash} \
+    echo "#! ${nixpkgs.bash} \
       cd $out/opt/rvgl && ./rvgl $@" > rvgl-launch-script.sh
     cp rvgl-launch-script.sh $out/usr/bin/rvgl 
     '';

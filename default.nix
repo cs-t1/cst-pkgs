@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ nixpkgs, ... }:
 {
-  rvgl = pkgs.callPackage ./pkgs/rvgl-bin.nix { };
+  rvgl = nixpkgs.callPackage ./pkgs/rvgl-bin.nix { };
 }
