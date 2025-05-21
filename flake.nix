@@ -5,6 +5,6 @@
   inputs.systems.url = "github:nix-systems/default";
 
   outputs = { self, systems }: {
-    pkgs = import ./default.nix {};
+    pkgs = import ./default.nix;
   };
 }
