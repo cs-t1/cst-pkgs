@@ -10,8 +10,7 @@
     flake-utils.lib.eachDefaultSystem
       (system:
         {
-
           pkgs = import ./default.nix { pkgs = (import nixpkgs { }); };
-        };
+        }
         )
 }
