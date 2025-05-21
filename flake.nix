@@ -6,6 +6,6 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   outputs = { self, systems, nixpkgs }: {
-    pkgs = import ./default.nix { nixpkgs = nixpkgs };
+    pkgs = import ./default.nix { nixpkgs = nixpkgs; };
   };
 }
