@@ -12,5 +12,5 @@
         {
           pkgs = import ./default.nix { pkgs = (import nixpkgs { }); };
         }
-        )
+        );
 }
